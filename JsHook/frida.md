@@ -112,6 +112,10 @@ chmod 755 frida-server
  
 # 运行文件
 ./frida-server
+ 
+# 检查是否运行成功
+netstat -tulnp | grep frida-server
+netstat -tulnp | grep 27042
 ```
 
 -----------------------
