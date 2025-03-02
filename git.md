@@ -14,17 +14,6 @@
 
 
 
-### 索引文件损坏修复
-
-```sh
-rm -f .git/index
-git read-tree HEAD
-```
-
-
-
-
-
 ### github访问过慢
 
 ```sh
@@ -189,3 +178,190 @@ git push -u origin master
 3. 设置完成之后会生成两个文件,默认文件位置和文件名,会在 `C:\Users\用户名\.ssh`路径下生成`id_ed25519.pub(公钥)`和`id_ed25519(私钥)`文件,打开公钥复制全部内容,添加到github的ssh密钥
 
 4. 复制ssh连接`git@github.com:qiaozhi-4/quiz.git`在Git Bash创建远程连接
+
+
+
+
+
+## 修改远程链接
+
+```sh
+# 查看当前远程仓库
+git remote -v
+# 修改远程仓库链接
+git remote set-url origin <新的远程仓库URL>
+git remote set-url origin git@github.com:qiaozhi-4/il2cpp-bridge.git
+# 验证修改
+git remote -v
+
+# 添加新的远程仓库（可选）
+git remote add <远程仓库名称> <新的远程仓库URL>
+git remote add origin https://github.com/username/another-repo.git
+# 删除旧的远程仓库（可选）
+git remote remove <远程仓库名称>
+git remote remove origin
+```
+
+
+
+
+
+
+
+# 子模块相关
+
+### 1. **添加子模块**
+
+将外部仓库添加为当前仓库的子模块：
+
+```
+git submodule add <仓库URL> [路径]
+```
+
+- `<仓库URL>`：子模块的 Git 仓库地址。
+- `[路径]`（可选）：子模块在当前仓库中的存放路径。如果不指定，默认使用仓库名称作为路径。
+
+示例：
+
+```
+git submodule add git@github.com:qiaozhi-4/script-store.git script-store
+```
+
+------
+
+### 2. **初始化子模块**
+
+克隆包含子模块的仓库后，需要初始化子模块：
+
+```
+git submodule init
+```
+
+这会根据 `.gitmodules` 文件中的配置初始化子模块。
+
+------
+
+### 3. **更新子模块**
+
+拉取子模块的内容：
+
+```
+git submodule update
+```
+
+常用参数：
+
+- `--init`：如果子模块未初始化，先初始化再更新。
+- `--recursive`：递归更新子模块中的子模块。
+- `--remote`：拉取子模块的最新提交，而不是父仓库记录的提交。
+
+示例：
+
+```
+git submodule update --init --recursive
+```
+
+------
+
+### 4. **克隆包含子模块的仓库**
+
+克隆父仓库时，同时初始化并更新子模块：
+
+```
+git clone --recurse-submodules <仓库URL>
+```
+
+------
+
+### 5. **查看子模块状态**
+
+查看子模块的状态（是否初始化、当前提交等）：
+
+```
+git submodule status
+```
+
+------
+
+### 6. **更新子模块的远程 URL**
+
+如果子模块的远程 URL 发生变化，可以更新：
+
+```
+git submodule sync
+```
+
+------
+
+### 7. **删除子模块**
+
+删除子模块需要手动操作：
+
+1. 删除子模块目录：
+
+   ```
+   rm -rf path/to/submodule
+   ```
+
+2. 删除 `.gitmodules` 文件中的相关配置。
+
+3. 删除 `.git/config` 中的子模块配置。
+
+4. 提交更改：
+
+   ```
+   git commit -am "Removed submodule"
+   ```
+
+------
+
+### 8. **拉取子模块的最新更改**
+
+在父仓库中拉取子模块的最新提交：
+
+```
+git submodule update --remote
+```
+
+------
+
+### 9. **进入子模块**
+
+进入子模块目录进行操作：
+
+```
+cd path/to/submodule
+```
+
+在子模块中可以像普通 Git 仓库一样操作（如 `git pull`、`git checkout` 等）。
+
+------
+
+### 10. **递归操作**
+
+如果子模块中还有子模块，可以使用 `--recursive` 参数递归操作：
+
+```
+git submodule update --init --recursive
+```
+
+------
+
+### 11. **更新子模块到指定分支**
+
+将子模块切换到指定分支并拉取最新代码：
+
+```
+git submodule foreach git checkout <分支名>
+git submodule foreach git pull origin <分支名>
+```
+
+------
+
+### 12. **忽略子模块的更改**
+
+如果你不想提交子模块的更改，可以忽略：
+
+```
+git config submodule.<子模块路径>.ignore all
+```
