@@ -59,6 +59,14 @@ adb connect 192.168.0.101:37333
 
 
 
+### 不登陆小米账号启用 MIUI 的 ADB 调试（安全设置）和 ADB 应用安装（需 Root）
+
+```text
+setprop persist.security.adbinstall 1
+setprop persist.security.adbinput 1
+setprop persist.fastboot.enable 1
+```
+
 
 
 
