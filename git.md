@@ -177,7 +177,23 @@ git push -u origin master
 
 3. 设置完成之后会生成两个文件,默认文件位置和文件名,会在 `C:\Users\用户名\.ssh`路径下生成`id_ed25519.pub(公钥)`和`id_ed25519(私钥)`文件,打开公钥复制全部内容,添加到github的ssh密钥
 
-4. 复制ssh连接`git@github.com:qiaozhi-4/quiz.git`在Git Bash创建远程连接
+4.  第一次连接该主机，SSH 会提示你验证主机密钥。手动连接到主机以触发验证 
+
+   ```sh
+   ssh -T git@github.com
+   ```
+
+    如果是 GitHub，会显示类似以下的提示： 
+
+   ```sh
+   The authenticity of host 'github.com (IP地址)' can't be established.
+   RSA key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+   Are you sure you want to continue connecting (yes/no)?
+   ```
+
+    输入 `yes` 并回车，SSH 会将该主机的密钥保存到 `C:\Users\用户名\.ssh\known_hosts` 文件中。 
+
+5. 复制ssh连接`git@github.com:qiaozhi-4/quiz.git`在Git Bash创建远程连接
 
 
 
