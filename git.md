@@ -96,7 +96,7 @@ git push -f origin master
 | git push 远程库地址别名 分支名     | 推送本地分支上的内容到远程仓库                            |
 | git clone 远程地址                 | 将远程仓库的内容克隆到本地                                |
 | git pull 远程库地址别名 远程分支名 | 将远程仓库对于分支最新内容拉下来后与 当前本地分支直接合并 |
-|                                    |                                                           |
+| git submodule add 远程地址 路径    |                                                           |
 |                                    |                                                           |
 |                                    |                                                           |
 |                                    |                                                           |

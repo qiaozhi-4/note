@@ -156,6 +156,32 @@ frida -U -f com.r2games.myhero.aligames
 
 
 
+
+
+# Frida版本切换
+
+```
+# 卸载安装
+pip uninstall frida-tools
+pip uninstall frida
+
+
+
+# 安装指定版本
+pip install frida-tools==12.1.0
+pip install frida==16.2.1
+```
+
+
+
+
+
+
+
+
+
+
+
 # Frida两种启动方式的区别
 
 1. `span` 模式：frida 重新打开一个进程
