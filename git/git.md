@@ -241,6 +241,17 @@ git submodule add <仓库URL> [路径]
 
 ```
 git submodule add git@github.com:qiaozhi-4/script-store.git script-store
+
+git submodule add https://github.com/eternalfuture-e38299/IL2CppReflector.git
+
+
+git submodule add https://github.com/qiaozhi-4/imgui.git app/src/main/cpp/libs/imgui
+
+git submodule add https://github.com/MJx0/KittyMemory.git app/src/main/cpp/libs/KittyMemory
+
+git submodule add https://github.com/Tencent/rapidjson.git app/src/main/cpp/libs/rapidjson
+
+git submodule add https://github.com/ByNameModding/BNM-Android.git app/src/main/cpp/libs/BNM-Android
 ```
 
 ------
@@ -263,6 +274,8 @@ git submodule init
 
 ```
 git submodule update
+git submodule update --init
+git submodule update --init --recursive
 ```
 
 常用参数：
